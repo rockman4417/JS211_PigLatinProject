@@ -3,13 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="dom-piglatin.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
+
+    <form onsubmit="return false">
+      <h1>PIG LATIN TRANSLATOR</h1>
     <hr/>
-    <div id="display-element"></div>
-    <button onclick="displayDate()">Click Me</button>
-    <hr/>
+    <p>Type a Word or Phrase into the Box to Translate</p>
+      <div><textarea id="display-element-to-string"></textarea></div>
+      
+      <button type="button" class="glow-on-hover" onclick="pigLatin()">CONVERT</button>
+      <p id="string-display"></p>
+    </form>
+    
+    
   </body>
 </html>
