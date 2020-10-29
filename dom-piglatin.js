@@ -1,3 +1,5 @@
+
+
 const pigLatin = (str) => {
 
     let display = document.getElementById("string-display")
@@ -39,6 +41,7 @@ const pigLatin = (str) => {
        });
        
        display.innerHTML = arr2.join(" ").toUpperCase()
+       animateCSS("string-display", 'rotateIn');
       return arr2.join(" ")
     
     }
@@ -47,7 +50,8 @@ const pigLatin = (str) => {
       
       // for words that start with a vowel:
         if (["a", "e", "i", "o", "u"].indexOf(str[0]) > -1) {
-            display.innerHTML = str=str+"yay".toUpperCase()
+            display.innerHTML = str.toUpperCase()+"yay".toUpperCase()
+            animateCSS("string-display", 'rotateIn');
             return str=str+"yay";
         }
     
@@ -62,7 +66,26 @@ const pigLatin = (str) => {
                    break;}
                 }
         display.innerHTML = str.toUpperCase()
+        
+        animateCSS("string-display", 'rotateIn');
+        
         return str;}
     }
 }
 
+const animateCSS = (element, animation, prefix = 'animate__') =>
+  // We create a Promise and return it
+  new Promise((resolve, reject) => {
+    const animationName = `${prefix}${animation}`;
+    const node = document.getElementById(element)
+
+    node.classList.add(`${prefix}animated`, animationName);
+
+    // When the animation ends, we clean the classes and resolve the Promise
+    function handleAnimationEnd() {
+      node.classList.remove(`${prefix}animated`, animationName);
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd, {once: true});
+  });
